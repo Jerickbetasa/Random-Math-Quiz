@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>random math quiz</title>
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  </head>
+  <body>
+    
+    <h4>MATH QUIZ</h4>
+    <button id="but" onclick="math(10,prompt)"> take a quiz now!</button>
+    <p id="para">YOUR CURRENT SCORE IS:<p id="para1">0</p></p>
+        <br>
+        <p id="messages">START NOW!</p>
+        <footer>
+            <li><a href="#"> HOME </a></li>
+            <li><a href="#"> ABOUT </a></li>
+            <li><a href="#"> CONTACTS </a></li>
+            <li><em id="em"> Ⓒall right reserved </em></li>
+        </footer>
+    <p id="timer"> 0 </p>
+    <style>
+        body {
+            background:#031321;
+            font-family:Arial,sans-serif;
+        }
+        footer {
+            transform:translate(0%,500px);
+            list-style-type:none;
+            text-align:center;
+            float:center;
+            margin-bottom:20px;
+        }
+        footer li {
+            margin-left:10px;
+            display:inline;
+        }
+        footer li a {
+            text-decoration:none;
+            color:white;
+        }
+        footer li #em {
+            display:block;
+            font-size:10px;
+            color:white;
+        }
+        h4 {
+            text-align:center;
+            animation:animate 1s linear infinite;
+            transition:text-shadow 3s ease-in-out;
+            color:white;
+            -webkit-box-reflect:below 1px linear-gradient(transparent,white);
+            letter-spacing:5px;
+        }
+        @keyframes animate{
+            0%, 18%, 20.1%, 30%, 50%, 60.1%, 80.1%, 90%, 92.2%{color: white; text-shadow:none;}
+            18.1%,20.1%,30%,50%,60.1%,80.1%,90%,92.1%,99.9% {color:fff; text-shadow:0 0 20px #cc33ff,0 0 40px #cc33ff,0 0 80px #cc33ff, 0 0 160px #cc33ff;}
+        }
+        button {
+            height:100px;
+            width:250px;
+            color:#2196f3;
+            font-weight: bolder;
+            font-size: 15px;
+            text-transform:capitalize;
+            letter-spacing:4px;
+            overflow:hidden;
+            appearance:none;
+            -webkit-appearance:none;
+            -moz-appearance: none;
+            outline:none;
+            border:none;
+            border-radius:5px;
+            box-shadow:0px 0px 10px #2196f3,0px 0px 20px #2196f3,0px 0px 30px #2196f3;
+            font-family:Arial,sans-serif;
+            position:absolute;
+            left:41%;
+            top:41%;
+            border:1px solid #2196f3;
+        }
+        button:hover {
+            color:#2196f3;
+            background:b7d4ec;
+            box-shadow:0px 0px 10px #b7d4ec,0px 0px 40px #b7d4ec,0px 0px 80px #b7d4ec;
+        }
+        button span:nth-child(1) {
+            top:10%;
+            left:-100%;
+            width:100%;
+            height:2px;
+            background:linear-gradient(90deg,transparent,#2196f3);
+        }
+        button:hover span:nth-child(1) {
+            left:100%;
+            transition:7s;
+            transition-delay:7s;
+        }
+        button:hover span:nth-child(3) {
+            right:100%;
+            transition:7s;
+            transition-delay:7s;
+        }
+        button span:nth-child(3) {
+            bottom:10%;
+            right:-100%;
+            width:100%;
+            height:2px;
+            background:linear-gradient(180deg,transparent,#2196f3);
+        }
+        button span:nth-child(2) {
+            top:10%;
+            left:-100%;
+            width:100%;
+            height:2px;
+            background:linear-gradient(0deg,transparent,#2196f3);
+        }
+        p {
+            color:white;
+            letter-spacing:3px;
+        }
+        #timer {
+            color:white;
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:16px;
+        }
+        </style>
+
+    <script>
+    let symbols = ["+","-","*"];
+    let i;
+
+     let tick = 0;
+     let time = document.getElementById("timer");
+     let clock = setInterval(() => {
+        time.innerHTML = tick++ + "s";
+        if(i == 20) {
+            clearInterval(clock)
+        }
+     }, 1000)
+
+     function math(value, action) {
+        let first = Math.floor(Math.random() * value);
+        let opt = Math.floor(Math.random() * value);
+        let opt1 = Math.floor(Math.random() * value);
+        
+        let min = ["Why you always cancelling the random math quiz? it is hard?","Don't be afraid if you get wrong. The more you made mistake, the more you learn!", "Try! You can do it!", "Don't be such a loser!", "It's just a number! Its not like it gonna bite you.", "Everyone is einstein. Just try your best!", "Math is fun! Why not give it a shot?", "Don't give up! You might surprise yourself.", "Leaving so soon? The numbers will miss you!", "Come on, give it a try! You've got this!", "Don't be pressure (I actually pressuring you)", "Feeling stuck? Take a deep breath and try again!", "I feel like you just accidentally cancel it. Try again!", "I know it's hard to find your value but this is simple!", "Running away? Math wasn't even chasing you.", "Don't go! I was just enjoying watching you thinking so hard to me", "You quitting math but can't quit your redflag partner?", "If you stay and try again, I promise I'll be the solution to your heart.", "Come on, stay. Stop running away from your problems!", "Leaving already? Okay, I'll add losing to your list of skills", "I bet 1+1 is too hard for you!", "So you ghost math because someone ghost you! Classic."];
+        let min1 = min[Math.floor(Math.random() * min.length)];    
+        
+        let con = ["✅ “Correct! You must have a PhD in smooth moves.", "🎤 Boom! Another mic drop moment for you.", "😎 You got it! No wonder you’re the main character", "💡 Big brain energy detected. Keep it coming!", "🏆 Winner vibes! You’re making this look easy.", "💘 Correct! If intelligence was attractive, you’d be a 10/10.", "🚀 Right on point! NASA just called, they need your genius.", "🎭 Ding ding! You answered that with pure charisma.", "💵 Correct! You just secured the bag… metaphorically.", "🤩 Brain? Check. Style? Check. You got it all!", "🕶️ Correct! You just earned 1 point charisma, comrade.", "🔥 That’s right! You’re on fire—someone get the extinguisher!", "🧠 Correct! Your IQ just flexed on all of us.", "🍽️ You ATE and left no crumbs."]
+        let con1 = con[Math.floor(Math.random() * con.length)]
+
+        i = document.getElementById("para1").innerHTML;       
+        let message1 = ["Keep it up!","You're doing great! Keep it up.","AWESOME! REACH THE SCORE OF 20 AND YOU WIN IN MATH QUIZ!!!", "ALMOST 20!!!!"];
+        let message = document.getElementById("messages");
+        
+        let addend1 = first + opt + opt1;
+        
+        let sym = symbols[Math.floor (Math.random() * symbols.length)]
+        
+        let second = Math.floor(Math.random() * value);
+        let opt2 = Math.floor(Math.random() * value);
+        let opt3 = Math.floor(Math.random() * value);
+        
+        let addend2 = second + opt2 + opt3;
+        let ans1 = addend1 + sym + addend2;
+        
+        let ans = eval(ans1)
+        let num = Number(action(addend1 + sym + addend2))
+        
+        if(num == ans) {
+           i++;
+           let para1 = document.querySelector("#para1").innerHTML = i;
+           alert(con1);
+             if(para1 == "5") {
+                message.innerHTML = message1[0];
+             }
+             else if(para1 == "10") {
+                message.innerHTML = message1[1];
+             }
+             else if(para1 == "15") {
+                message.innerHTML = message1[2];
+             }
+             else if(para1 == "19") {
+                message.innerHTML = message1[3];
+             }
+             else if(para1 == "20") {
+                document.write(`
+            <html>
+            <body>
+            <p id="p1">YOU WIN!!<br> Exit the website or refresh if you want to restart.</p>
+            <img src="goodjob.jpg">
+            <p id="p2">Cat-rizzma Purr-ington</p>
+            <p id="p3">The feline enigma, the legend, the undisputed rizz god of the animal kingdom. Born
+                with a coat smoother than silk and a gaze that melts even the coldest of hearts, he doesn't
+                just walk-he glides. Every pawstep? Calculated. Every tail flick? Mesmerizing.
+                <br><br>
+                He doesn't beg for treats; treats beg to be given to him. He doesn't chase mice; mice offer themselves.
+                With a single slow blink, he can make even the most loyal dog question their alliance. Some say he was
+                blessed by the gods of charisma but others believe he is the charisma.
+                <br><br><br>
+                <b style="font-size:25px;">You made him proud, comrade!</b>
+            </p>
+            <p id="timer"> </p>
+            <style>
+                body {
+                    background:#031321;
+                    font-family:Arial,sans-serif;
+                }
+                #p1 {
+                    position:fixed;
+                    top:1%;
+                    left:12%;
+                    text-shadow:0px 0px 10px #81bdee,0px 0px 00px #81bdee,0px 0px 0px #81bdee;
+                    color:#008cff;
+                    font-size:50px;
+                    font-family:Arial,sans-serif;
+                    color:white;
+                    text-align:center;
+                }
+                #p2 {
+                    position:absolute;
+                    top:25%;
+                    left:50%;
+                    font-size:50px;
+                    font-family:Arial,sans-serif;
+                    text-shadow:0px 0px 10px #81bdee,0px 0px 00px #81bdee,0px 0px 0px #81bdee;
+                    color:white;
+                }
+                #p2:hover {
+                    text-shadow:0px 0px 10px #008cff,0px 0px 20px #008cff,0px 0px 30px #008cff;
+                }
+                #p1:hover {
+                    text-shadow:0px 0px 10px #008cff,0px 0px 20px #008cff,0px 0px 30px #008cff;
+                }
+                #p3 {
+                    color:white;
+                    width:500px;
+                    font-family:Arial,sans-serif;
+                    position:absolute;
+                    top:43%;
+                    left:50%;
+                    text-shadow:0px 0px 10px #81bdee,0px 0px 00px #81bdee,0px 0px 0px #81bdee;
+                    color:white;
+                }
+                img {
+                    height:350px;
+                    width:330px;
+                    position:absolute;
+                    top:34%;
+                    left:20%;
+                    border-radius:10px;
+                    box-shadow:0px 0px 10px #81bdee,0px 0px 0px #81bdee,0px 0px 0px #81bdee;
+                }
+                img:hover {
+                    box-shadow:0px 0px 10px #008cff,0px 0px 20px #008cff,0px 0px 30px #008cff;
+                }
+                    #timer {
+                    position:absolute;
+                    top:80%;
+                    left:50%;
+                    font-size:50px;
+                    font-family:Arial,sans-serif;
+                    text-shadow:0px 0px 10px #81bdee,0px 0px 00px #81bdee,0px 0px 0px #81bdee;
+                    color:white;
+                }
+            </style>
+            <script>
+                document.getElementById("timer").innerHTML = tick + "s"
+            <\/script>
+            </body>
+            </html>`)
+             }
+         }
+        else if(num == "") {
+           alert(min1);
+           if(i != 0) {
+                i--
+                para1.innerHTML = i;
+            }
+            else {
+                return i
+            }
+        }
+        else if(!/^[0-9]+$/.test(num)) {
+            alert("I don't know if you type something beside number but stay inputting numbers only.")
+        }
+        else {
+           alert("Wrong answer" + "\n" + "The correct answer is " + "\n" + "\n" + ans + "\n");
+           if(i != 0) {
+                i--
+                para1.innerHTML = i;
+            }
+            else {
+                return i
+            }
+        }
+     }
+
+    </script>
+  </body>
+</html>
